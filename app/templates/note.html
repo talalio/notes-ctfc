@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add note
+{% endblock title %}
+
+{% block content %}
+<main class="p-5 d-flex flex-row justify-content-center align-items-center">
+    <form class="row justify-content-center" action="/notes/add" method="POST">
+        <div class="mb-3">
+          <div class="w-100">
+            <input type="text" class="form-control" name="note_title" placeholder="Title">
+          </div>
+        </div>
+        <div class="mb-3">
+            <div class="w-100">
+                <textarea class="form-control note-content" name="note_content" placeholder="Content" style="height: 15em;"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="w-75 btn btn-primary">Save</button>
+    </form>
+</main>
+{% endblock content %}

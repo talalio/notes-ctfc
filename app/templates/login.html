@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+{% if err %}
+<div class="d-flex justify-content-center">
+    <div class="w-50 text-center alert alert-danger alert-dismissible " role="alert">
+        <div>{{msg}}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+<main class="container d-flex flex-fill align-items-center ">
+    <form class="col g-2 text-center justify-content-center" action="/api/login" method="POST">
+        <div class="row mb-3 justify-content-center">
+            <div class="col-5 justify-content-center">
+                <label class="visually-hidden" for="">Username</label>
+                <div class="input-group">
+                    <div class="input-group-text">@</div>
+                    <input type="text" class="form-control" id="" name="username" placeholder="Username">
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <div class="col-5">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</main>
+{% endblock content %}

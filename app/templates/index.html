@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+{% if username %}
+<main class="p-5 d-flex gap-3 flex-wrap justify-content-center">
+    {% if notes %}
+        {% for note in notes %}
+        <div class="w-50 card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h3 class="card-title">{{note.title}}</h3>
+                    <button nid={{note.id}} class="btn btn-outline-danger note-del" onclick="deleteNote(this)">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </div>
+                <p class="card-text">{{note.content}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p class="text-center">
+        You havent added any note yet! go to 
+        <a href="/note">To add a new one</a>
+    </p>
+    {% endif %}
+</main>
+<script src="/static/js/main.js"></script>
+{% else %}
+<main class="container d-flex flex-fill align-items-center">
+    <div class="col">
+        <p class="text-center">
+            Welcome to ノートパッド, a secure and easy to use application to keep your notes.
+            <br>Please <a href="/login">Login</a> or <a href="/register">Register</a> a new account
+            to use the service. 
+        </p>
+    </div>
+</main>
+{% endif %}
+{% endblock content %}
